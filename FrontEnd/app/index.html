@@ -17,6 +17,8 @@
         <p> Longitud: {{ posicion.Longitude }}</p>
     </div>
 
+    <input type="button" ng-click="actualizar()" value="Actualizar" />
+
 </div>
 
 <script>
@@ -25,10 +27,12 @@
     angular.module('myApp', []);
 
     function positionController($scope,$http) {
-        $http.get('http://192.168.200.123:8888/')
-        .success(function(response) {
-            $scope.posicion = response;
-        });
+        $scope.actualizar = function(){
+            $http.get('http://192.168.200.123:8888/')
+            .success(function(response) {
+                $scope.posicion = response;
+            });
+        }
     }
 </script>
 
