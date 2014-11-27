@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="positionController">
+
+    <div>
+        <p> ID: {{ posicion.UnitId }}</p>
+        <p> Nombre: {{ posicion.UnitName }}</p>
+        <p> Latitud: {{ posicion.Latitude }}</p>
+        <p> Longitud: {{ posicion.Longitude }}</p>
+    </div>
+
+</div>
+
+<script>
+
+    'use strict';
+    angular.module('myApp', []);
+
+    function positionController($scope,$http) {
+        $http.get('http://192.168.200.123:8888/')
+        .success(function(response) {
+            $scope.posicion = response;
+        });
+    }
+</script>
+
+</body>
+</html>
